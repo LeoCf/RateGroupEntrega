@@ -20,7 +20,7 @@
         "symfony/css-selector": "3.1.*",
         "symfony/dom-crawler": "3.1.*",
         "doctrine/dbal":"~2.3",
-        "laracasts/generators": "^1.1"
+        "laracasts/generators": "^1.1",
         "doctrine/dbal": "~2.3"
     
     },

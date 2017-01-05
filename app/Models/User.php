@@ -46,7 +46,7 @@ class User extends Model implements AuthenticatableContract
 
     public function student_grades(){
 
-        return $this->hasMany('App\Models\student_grade','utilizadores_idUser');
+        return $this->hasOne('App\Models\student_grade','utilizadores_idUser');
     }
 
 }

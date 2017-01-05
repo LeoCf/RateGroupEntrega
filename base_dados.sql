@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 05-Jan-2017 às 22:15
+-- Generation Time: 06-Jan-2017 às 00:01
 -- Versão do servidor: 5.7.11
 -- PHP Version: 5.6.24
 
@@ -291,7 +291,13 @@ INSERT INTO `students_grades` (`id`, `work_done`, `work_comprehension`, `quality
 (2, 5, 5, 5, 5, 5, 5, 14, '2017-01-03 01:17:03', '2017-01-03 01:17:03'),
 (3, 1, 1, 1, 1, 1, 1, 15, '2017-01-03 01:17:52', '2017-01-03 01:17:52'),
 (4, 2, 2, 2, 2, 2, 2, 15, '2017-01-03 01:18:14', '2017-01-03 01:18:14'),
-(5, 1, 4, 2, 5, 3, 2, 15, '2017-01-04 05:30:12', '2017-01-04 05:30:12');
+(5, 1, 4, 2, 5, 3, 2, 15, '2017-01-04 05:30:12', '2017-01-04 05:30:12'),
+(6, 4, 5, 4, 3, 4, 5, 21, NULL, NULL),
+(7, 4, 4, 3, 5, 3, 2, 22, NULL, NULL),
+(8, 0, 0, 0, 0, 0, 0, 23, NULL, NULL),
+(9, 0, 0, 0, 0, 0, 0, 24, NULL, NULL),
+(10, 0, 0, 0, 0, 0, 0, 25, NULL, NULL),
+(11, 0, 0, 0, 0, 0, 0, 26, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -456,7 +462,7 @@ ALTER TABLE `profiles`
 -- AUTO_INCREMENT for table `students_grades`
 --
 ALTER TABLE `students_grades`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 --
 -- AUTO_INCREMENT for table `users`
 --

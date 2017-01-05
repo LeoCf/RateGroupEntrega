@@ -141,15 +141,6 @@ $users_degroup = DB::table('group_user')
 //dd($users_degroup);
         return view('avaliacao',compact('users_degroup','id','meusGrupos'));
     }
-
-
- /*   public function medias(Request $req) {
-
-$grades = student_grade::all()->avg(work_done);
-
-        return view('perfil',compact('$grades','id'));
-dd($grades);
-    }*/
     
 }
 

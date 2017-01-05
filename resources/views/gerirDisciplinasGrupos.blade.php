@@ -10,16 +10,16 @@
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
                                 <div class="panel-heading"><h1>Os meus dados academicos </h1></div>
-                                    <div class="panel-heading"> A minha instituição:{{$instituição}}
+                                    <div class="panel-heading"> A minha instituição:   {{$instituição}}
                                     <br>  <br>  <br>
                                     O meu curso:  {{$curso}}                               
                                     @foreach($discipline as $discp_active) 
                                     {{Form::open(array('action' => array('gerirDiscpGroupController@remover_disciplina_utilizador', $discp_active->id)))}}
-                                    Disciplinas Activa:{{Form::submit($discp_active->discp_name)}} 
+                                    Disciplinas Activa : {{Form::submit($discp_active->discp_name)}} 
                                     {{Form::close()}}
                                     @endforeach
                                     @foreach($grupos_activos as $grup_activos)
-                                    Grupo Activo:{{Form::button($grup_activos->nome)}}
+                                    Grupo Activo: {{Form::button($grup_activos->nome)}}
                                     @endforeach
                                     </div>                           
                                  <div class="panel-heading"><h1>Disciplinas do Curso  </h1></div>
@@ -56,3 +56,4 @@
 </div>
 
 @endsection('content')
+

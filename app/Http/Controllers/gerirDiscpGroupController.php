@@ -15,7 +15,15 @@ use Illuminate\Support\Collection;
 class gerirDiscpGroupController extends Controller
 {
 
-	    public function index()
+    public function getDisciplines()
+    {
+        $disciplinas=Discplines()->get();
+        return $disciplinas;
+	        
+    }
+    
+
+     public function index()
     {   
         //Dados do Utilizador 
     	$user = Auth::user();

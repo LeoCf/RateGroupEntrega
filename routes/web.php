@@ -17,6 +17,10 @@ Route::get('/', function () {
 
 Auth::routes();
 
+$api->group(['prefix' => 'RateApi','namespace' => 'App\Http\Controllers'], function($api)
+{
+	$api->get('getDisciplines','gerirDiscpGroupController@getDisciplines');
+});
 
 Route::get('/home', 'HomeController@index');
 

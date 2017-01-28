@@ -17,10 +17,7 @@ Route::get('/', function () {
 
 Auth::routes();
 
-$api->group(['prefix' => 'RateApi','namespace' => 'App\Http\Controllers'], function($api)
-{
-	$api->get('getDisciplines','gerirDiscpGroupController@getDisciplines');
-});
+
 
 Route::get('/home', 'HomeController@index');
 
@@ -50,3 +47,22 @@ Route::post('/avClgs/aluno/{user_id}','avaliarController@alunoEscolhido');
 
 Route::post('/avClgs/add','avGrupos@add');
 Route::get('/avClgs/','avGruposController@index');
+
+Route::group(array('prefix' => 'api'), function()
+{
+
+  	Route::get('/', function () 
+  	{
+      return response()->json(['message' => 'Api Rate Me', 'status' => 'Connected']);;
+  	});
+  	Route::get('/getInstitution','apiController@getInstitutions');
+  	Route::get('/getCourses/{inst_name}','apiController@getCourses');
+  	Route::get('/getDisciplines/{inst_name}/{course_name}','apiController@getDisciplines');
+ 
+});
+
+Route::get('/', function () {
+    return redirect('api');
+});
+
+

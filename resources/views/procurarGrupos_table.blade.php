@@ -2,7 +2,10 @@
 <style>
 table, th, td {
     border: 1px solid black;
+
 }
+
+
 </style>
 
 <script>
@@ -17,11 +20,12 @@ function Pedir_pass() {
 @endsection('menu')
 
 @section('content')
+
 <div class="container">
             <div class="panel panel-default">
                 <div class="panel-heading"><h1>Grupos Criados  </h1></div>
                 	<div class="panel-body">
-                		<table id="alunosComGrupo" class="tabelaComGrupo" width="100%">
+                		<table id="alunosComGrupo" class="tabelaDiscp" width="100%">
 						<tr>
 						<th>Nome</th>
 						<th>Id do Grupo</th>
@@ -45,7 +49,7 @@ function Pedir_pass() {
             <div class="panel panel-default">
                 <div class="panel-heading"><h1>Alunos à procura de grupo  </h1></div>
                 	<div class="panel-body">
-                		<table id="alunosSemGrupo" class="tabelaSemGrupo" width="100%">
+                		<table id="alunosSemGrupo" class="tabelaDiscp" width="100%">
 						<tr>
 						<th>Nome</th>
 						<th>Curso</th>

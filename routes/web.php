@@ -58,11 +58,11 @@ Route::group(array('prefix' => 'api'), function()
   	Route::get('/getInstitution','apiController@getInstitutions');
   	Route::get('/getCourses/{inst_name}','apiController@getCourses');
   	Route::get('/getDisciplines/{inst_name}/{course_name}','apiController@getDisciplines');
- 
+  	Route::get('/getInstitutionsUser/{inst_name}','apiController@getInstitutionsUser');
+ 	Route::get('/getInstitutionsProff/{inst_name}','apiController@getInstitutionsProff');
+ 	Route::get('/getNumberOfGroups','apiController@getNumberOfGroups');
 });
 
-Route::get('/', function () {
-    return redirect('api');
-});
+
 
 

@@ -346,11 +346,26 @@ form input{
 #alunosSemGrupo{
 	position: relative;
 	background-color: white;
-	opacity: 0.7;
+	opacity: 0.9;
 	color: black;
 	text-indent: 50px;
 	font-size: 18px;
 }
+
+
+tr:hover{background-color:#1E90FF}
+
+
+
+ .tabelaDiscp 
+ {
+    font-weight: bold;
+
+}
+
+
+
+
 
 /*     */
 h1 {

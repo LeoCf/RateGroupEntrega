@@ -1,8 +1,5 @@
 @extends('layouts.app')
 
-@section('menu')
-
-@endsection('menu')
 
 @section('content')
 <div class="container">
@@ -11,7 +8,7 @@
             <div class="panel panel-default">
                                 <div class="panel-heading"><h1>Os meus dados academicos </h1></div>
                                     <div class="panel-heading"> A minha instituição:   {{$instituição}}
-                                    <br>  <br>  <br>
+                                    <br>  
                                     O meu curso:  {{$curso}}                               
                                     @foreach($discipline as $discp_active) 
                                     {{Form::open(array('action' => array('gerirDiscpGroupController@remover_disciplina_utilizador', $discp_active->id)))}}
@@ -21,39 +18,46 @@
                                     @foreach($grupos_activos as $grup_activos)
                                     Grupo Activo: {{Form::button($grup_activos->nome)}}
                                     @endforeach
+                                            
                                     </div>                           
-                                 <div class="panel-heading"><h1>Disciplinas do Curso  </h1></div>
+                                    <div class="panel-heading"><h1>Disciplinas do Curso  </h1></div>
                                 @foreach($disciplinas_do_curso_unsub as $discp_curso) 
                                 {{Form::open(array('action' => array('gerirDiscpGroupController@adicionar_disciplina_utilizador', $discp_curso->id)))}}
-                            <div class="panel-heading"> Disciplinas disponiveis para inscrição: {{Form::submit($discp_curso->discp_name)}}
+                                <div class="panel-heading"><h1>Disciplinas disponiveis para inscrição</h1>{{Form::submit($discp_curso->discp_name)}}
                                  {{Form::close()}}
                                 @endforeach       
-                            </div>
+                                
 
-<div class="panel-heading"><h1>Introduzir novo grupo</h1></div>
+<div class="panel-heading"><h1>Introduzir novo grupo</h1>
 
 {{Form::open(array('action' => 'gerirDiscpGroupController@adicionar_grupo_utilizador'))}}
-{{Form::label('nome_grupo', 'Nome do Grupo', array('class' => 'form'))}}
+{{Form::label('nome_grupo', 'Nome do Grupo', array('class' => 'formGrupo'))}}
 {{Form::text('username')}}
-<br> <br>
-{{Form::label('num_alunos', 'Numero  de  Alunos', array('class' => 'awesome'))}}
+
+{{Form::label('num_alunos', 'Numero  de  Alunos', array('class' => 'formGrupo'))}}
 {{Form::select('number', [1, 2, 3,4,5,6,7,8,9,10])}}
-<br>
-{{Form::label('date_fim', 'Data  de  Fim  ', array('class' => 'awesome'))}}
+
+{{Form::label('date_fim', 'Data  de  Fim  ', array('class' => 'formGrupo'))}}
 {{Form::date('date') }}
-<br>
-{{Form::label('password', 'password', array('class' => 'awesome'))}}
+
+{{Form::label('password', 'password', array('class' => 'formGrupo'))}}
 {{Form::password('password')}}
-{{Form::select('disciplina_cg', $grupos_nao_activos)}}
-<br>
+
+{{Form::label('disciplina_cg' ,'Selecionar Disciplina', array('class' => 'formGrupo'))}}
+{{Form::select('disciplina_cg', $grupos_nao_activos )}}
+
 {{Form::submit('Criar Grupo')}}
 {{Form::close()}}
+</div>
 
-</div>                     
+<br> <br> <br>
 </div>
-</div>
-</div>
-</div>
+
+
+
+
 
 @endsection('content')
+
+
 

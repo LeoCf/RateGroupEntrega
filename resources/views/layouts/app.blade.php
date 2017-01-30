@@ -151,7 +151,7 @@
     
 
          @yield('menu')
-
+        
         @yield('content')
 
 <div class="footer">

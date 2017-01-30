@@ -62,9 +62,9 @@ function Pedir_pass() {
 						@foreach($users_nogroup as $users) 
 							<tr><td>{{$users->name}}</td>
 							<td>{{$users->course_id}}</td>
-							<td></td>
+							<td>{{$users->rating}}</td>
 							<td>{{$perfil_users->find($users->profile_id)->name }} </td>
-							<td>{{Form::Button("Convidar")}}</td>
+							<td>@if(!($user->id==$users->id)){{Form::Button("Convidar")}} @endif</td>
 							</tr>
 						@endforeach
 						</table>

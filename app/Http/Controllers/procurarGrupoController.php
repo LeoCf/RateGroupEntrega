@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
     use App\Models\User;
     use App\Models\Institution;
     use App\Models\profile;
-    use App\Models\student_grande;
+    use App\Models\student_grade;
     use App\Models\group;
 use Illuminate\Support\Facades\Input;
 
@@ -17,10 +17,10 @@ use DB;
 
 class procurarGrupoController extends Controller 
 {
-    
+  
     public function index()
     {
-    	$user = Auth::user();
+        $user = Auth::user();
     	$id=$user->id;
     	$course_id=$user->course_id;
         $curso=Course::where('id',$course_id)->pluck('course_name');                      
@@ -35,7 +35,8 @@ class procurarGrupoController extends Controller
       
     public function disciplina_escolhida(Request $request,$id)
     {
-        //1º procuramos os utilizadores da disciplina 
+        $user = Auth::user();
+            //1º procuramos os utilizadores da disciplina 
         $discipline_user = User::whereHas( 'disciplines', function($q) use($id)    //colocar use id scope da var
         {
             $q->where('id', $id);
@@ -66,19 +67,44 @@ class procurarGrupoController extends Controller
         //parametro adicional para ser passado em caso de pass errada não esta implementado
         $pass_errada='';
         
-        
+
+
+
         //Aqui é guardado o  id do perfil dos utilizador que não possuem grupo
         $perfil_users_id=$users_nogroup->map(function ($item, $key) {
            return $item->profile_id;
 
         });
 
+        print($perfil_users_id);
+        $rating = collect([]);
         //aqui ficam o nome do perfil que corresponde aos ids obtidos anteriormente
         $perfil_users=Profile::whereIn('id',$perfil_users_id)->get();
+        foreach($users_nogroup as $user_eval)
+        {
 
-        
+            $avaliacao=student_grade::where('utilizadores_idUser',$user_eval->id)->get();
+            $rating->push(($avaliacao->sum(function ($avaliacao) 
+            {
+            $soma=$avaliacao->workd_done + $avaliacao->work_comprehension + $avaliacao->quality_work + $avaliacao->comprehension + $avaliacao->commitment + $avaliacao->efficienty;
+                return $soma/6;
+            })));
+            
+
+            //Avaliação dos utilizadores 
+            $users_nogroup->map(function ($user_eval,$key) use($rating)  
+            {
+                return $user_eval['rating']=$rating->get($key);
+            });
+
+
+        }
+
+   
+        print($rating);
     
-       return view('procurarGrupos_table',compact('users_nogroup','perfil_semGrupo','grupos_activos','grupos_formados','pass_errada','perfil_users'));
+    
+       return view('procurarGrupos_table',compact('users_nogroup','perfil_semGrupo','grupos_activos','grupos_formados','pass_errada','perfil_users','user'));
     }
 
     //função que retorna o curso do utilizador 

@@ -12,8 +12,20 @@
             <div class="panel panel-default">
                 		<div class="panel-heading"><h1> Os meus dados Pessoais </h1></div>
 		                <div class="panel-heading">
-								<p> Nome: {{$user->name}}</p>
+		                		<div class="upimg">
+		                		<h2><img src="/avatars/{{ $user->avatar }}"></h2>
+
+		                		<form  enctype ="multipart/form-data" action="/perfil" method="POST">
+		                		<LABEL>Actualizar foto de Perfil</LABEL>
+		                	
+		                		<input type="file" name="avatar" id="avsub">
+		                		<input type="hidden" name="_token" value="{{csrf_token()}}">
+		                		<input type="submit" id="avsub">
+		                		</form>
+		                		</div>
+		         				<p> Nome: {{$user->name}}</p>
 								<p> Perfil de Utilizador: {{$perfil}} </p>
+
 								
 						</div>
 								<div class="panel-heading"><h1>A minha avaliação </h1></div>

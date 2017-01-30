@@ -6,6 +6,54 @@
 			
 			}
 			
+			div.upimg {
+					vertical-align: top;
+    				display: inline-block;
+    				text-align: center;
+    				width: 120px;
+			}
+
+			.upimg img {
+				width:150px;
+				height:150px;
+				float:left;
+				border-radius:10%;
+				margin-right:25px; 
+
+			}
+
+			#avsub{
+				 
+			    border: none;
+			    color: white;
+			 
+			    text-align: center;
+			    text-decoration: none;
+			    display: inline-block;
+			    font-size: 10px;
+			    width: 20em;  
+			    height: 2em;	
+    		}
+
+			.upimg label {
+				font-size: small;
+				display: block;
+				margin-left:25px;
+				
+
+
+			}
+
+
+			.label_update{
+				font-size: medium;
+
+			}
+
+			.form_update{
+				 width: 100%;
+			}
+
 
 			#tit_wel{
 

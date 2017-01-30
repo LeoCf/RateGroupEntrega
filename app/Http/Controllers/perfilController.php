@@ -11,6 +11,7 @@ use App\Models\Group;
 use App\Models\Profile;
 use Auth;
 use DB;
+use Image;
 
 
 class perfilController extends Controller
@@ -38,6 +39,21 @@ class perfilController extends Controller
     
   
     	return view('perfil',compact('user','perfil','avaliacao','rating'));
+    }
+
+    //update da imagem do utilizador
+    public function update_avatar(Request $request)
+    {   
+        $user=Auth::user();
+        $nome=$user->name;
+        if($request->hasFile('avatar')){
+            $avatar=$request->file('avatar');
+            $filename=$nome+time().'.'.$avatar->getClientOriginalExtension();
+            Image::make($avatar)->resize(300,300)->save(public_path('/avatars/'.$filename));
+            $user->avatar=$filename;
+            $user->save();
+        }
+        return redirect('perfil');
     }
 
 }

@@ -22,7 +22,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index');
 
 Route::get('/perfil','perfilController@index');
-
+Route::post('/perfil','perfilController@update_avatar');
 //Rotas para gestão das disciplinas e Grupos
 Route::get('/gerirDisciplinasGrupos','gerirDiscpGroupController@index');
 Route::post('/gerirDisciplinasGrupos/{id}','gerirDiscpGroupController@adicionar_disciplina_utilizador');

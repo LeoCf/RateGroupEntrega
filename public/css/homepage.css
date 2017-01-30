@@ -6,48 +6,44 @@
 			
 			}
 			
-			div.upimg {
-					vertical-align: top;
-    				display: inline-block;
-    				text-align: center;
-    				width: 120px;
-			}
-
-			.upimg img {
+			.upimg {
 				width:150px;
 				height:150px;
 				float:left;
-				border-radius:10%;
+				border-radius:50%;
 				margin-right:25px; 
+				margin-left:25px;
+				margin-bottom:5px;
+				margin-top:10px;
+			}
 
+		
+
+			.upimg p{
+			text-align:center
 			}
 
 			#avsub{
 				 
 			    border: none;
 			    color: white;
-			 
+			 	margin-left:35px;
 			    text-align: center;
 			    text-decoration: none;
-			    display: inline-block;
+			    
 			    font-size: 10px;
-			    width: 20em;  
+			    width: 15em;  
 			    height: 2em;	
     		}
 
-			.upimg label {
-				font-size: small;
+		
+
+			#label_update
+			{
+					font-size: small;
 				display: block;
-				margin-left:25px;
-				
-
-
-			}
-
-
-			.label_update{
-				font-size: medium;
-
+				margin-left:65px;
+				margin-bottom:0px;
 			}
 
 			.form_update{

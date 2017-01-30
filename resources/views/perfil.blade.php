@@ -10,24 +10,23 @@
    <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                		<div class="panel-heading"><h1> Os meus dados Pessoais </h1></div>
-		                <div class="panel-heading">
-		                		<div class="upimg">
-		                		<h2><img src="/avatars/{{ $user->avatar }}"></h2>
-
+                		<div class="panel-heading"><h1> Os meus dados Pessoais </h1></div>		
+                				
+		                		
+		                		<img src="/avatars/{{ $user->avatar }}" class="upimg"/> 
+		                		<p style="text-align:center; margin-top:20px;">Nome: {{$user->name}}</p>
+		                		<p style="text-align:center">Perfil de Utilizador: {{$perfil}}</p>
+		                		<p style="text-align:center">Email: {{$user->email}}</p>
+		                		<p style="text-align:center">Membro desde: {{$user->created_at}}</p>
 		                		<form  enctype ="multipart/form-data" action="/perfil" method="POST">
-		                		<LABEL>Actualizar foto de Perfil</LABEL>
-		                	
+		                		<LABEL id="label_update">Actualizar foto de Perfil</LABEL>
 		                		<input type="file" name="avatar" id="avsub">
 		                		<input type="hidden" name="_token" value="{{csrf_token()}}">
 		                		<input type="submit" id="avsub">
 		                		</form>
-		                		</div>
-		         				<p> Nome: {{$user->name}}</p>
-								<p> Perfil de Utilizador: {{$perfil}} </p>
+		               
+		         			
 
-								
-						</div>
 								<div class="panel-heading"><h1>A minha avaliação </h1></div>
 								@foreach($avaliacao as $avaliacao)
 								<p> Trabalho Efectuado: {{round($avaliacao->wd,2)}} </p>

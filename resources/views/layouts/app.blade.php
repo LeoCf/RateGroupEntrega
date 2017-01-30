@@ -115,13 +115,13 @@
                             </ul>  
                         </div>
                     
-                        @else if(Auth::user()->type=='prof')
+                        @elseif(Auth::user()->type=='prof')
                             <div class="menu_vertical"> 
                             <img src="{{ URL::asset('images/logo_RateMe.png') }}" alt="logoRateMe" width="120px" height="100px" />
                             <ul>
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" style="position:relative; padding-left:40px">
-                                <img src="/avatars/{{ $user->avatar }}" style="width:32px ;height:32px; position:absolute; top:0px; left:0px; border-radius: 50%">
+                                <img src="/avatars/{{ Auth::user()->avatar }}" style="width:32px ;height:32px; position:absolute; top:0px; left:0px; border-radius: 50%">
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
                                 <ul class="dropdown-menu" role="menu">
@@ -139,7 +139,7 @@
                                 </ul>
                             </li>
                                 <li><a href="/procurarGrupos">As minhas Disciplinas</a></li>
-                                <li><a href="#contact">Perfil</a></li>
+                                <li><a href="/perfil">Perfil</a></li>
                             </ul>  
                         </div>
                     @endif

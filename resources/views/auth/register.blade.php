@@ -76,6 +76,10 @@
                             <label for="perfil" class="col-md-4 control-label">Perfil</label>
                            {{Form::select('perfil', $perfil)}}
                         </div>
+                        <div class="form-group">
+                            <label for="tipo" class="col-md-4 control-label">Tipo de utilizador</label>
+                            {{Form::select('tipo', array('prof' => 'prof','user' => 'aluno', ))}}
+                        </div>
                         
 
 

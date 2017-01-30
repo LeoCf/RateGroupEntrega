@@ -48,6 +48,9 @@ class procurarGrupoController extends Controller
             $q->where('gu_discp_id',$id);  
         })->get();
 
+
+        $usersGroup=User::with('groups')->where('inst_id','1')->get();
+        //dd($usersGroup);
         //vemos aqui quais os utilizadores que pertencem a disciplina mas não tem grupo 
         $users_nogroup=$discipline_user->diff($users_with_group);
         
@@ -57,6 +60,7 @@ class procurarGrupoController extends Controller
             $q->where('gu_discp_id', $id);
         })->get();
 
+            
         //Disciplinas em que o utilizador esta inscrito 
         $user=Auth::user();
         $grupos_activos_user=$user->groups()->get(); 
@@ -76,7 +80,7 @@ class procurarGrupoController extends Controller
 
         });
 
-        print($perfil_users_id);
+        //Parte correspondente as avaliações dos alunos que não tem grupo
         $rating = collect([]);
         //aqui ficam o nome do perfil que corresponde aos ids obtidos anteriormente
         $perfil_users=Profile::whereIn('id',$perfil_users_id)->get();
@@ -100,11 +104,9 @@ class procurarGrupoController extends Controller
 
         }
 
-   
-        print($rating);
     
     
-       return view('procurarGrupos_table',compact('users_nogroup','perfil_semGrupo','grupos_activos','grupos_formados','pass_errada','perfil_users','user'));
+       return view('procurarGrupos_table',compact('users_nogroup','perfil_semGrupo','grupos_activos','grupos_formados','pass_errada','perfil_users','user','users_with_group','usersGroup'));
     }
 
     //função que retorna o curso do utilizador 

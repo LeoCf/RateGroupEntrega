@@ -25,13 +25,14 @@ function Pedir_pass() {
             <div class="panel panel-default">
                 <div class="panel-heading"><h1>Grupos Criados  </h1></div>
                 	<div class="panel-body">
+                	@if(Auth::user()->type=='user')
                 		<table id="alunosComGrupo" class="tabelaDiscp" width="100%">
 						<tr>
 						<th>Nome</th>
 						<th>Id do Grupo</th>
 						<th>Juntar-se ao Grupo</th>
 						</tr>
-					</div>
+						
 						<tr>
 						@foreach($grupos_formados as $nome)
 						{{Form::open(array('action' => array('procurarGrupoController@aderir_grupo', $nome->id)))}}
@@ -44,7 +45,35 @@ function Pedir_pass() {
 						{{Form::close()}}
 						@endforeach
 						</tr>
+
+						
+
+
+						@elseif(Auth::user()->type=='prof')
+						<table id="alunosComGrupo" class="tabelaDiscp" width="100%">
+						@foreach($grupos_formados as $nome)
+						<tr>
+						<th>Nome do Grupo: {{$nome->nome}}</th>
+						<th>Id do Grupo: {{$nome->id}}</th>
+						</tr>
 						</table>
+						
+						<table id="alunosComGrupo" class="tabelaDiscp" width="100%">
+						<th>Elementos do Grupo</th>
+						<th>Id do Curo</th>
+						@foreach($usersGroup as $users) 
+						<tr><td>{{$users->name}}</td>
+						<td>{{$users->course_id}}</td>
+						<td>{{$users->rating}}</td>
+						<td>{{$perfil_users->find($users->profile_id)->name }} </td>
+						@endforeach
+						@endforeach
+						</table>
+						@endif
+			
+
+
+
 			</div>	
             <div class="panel panel-default">
                 <div class="panel-heading"><h1>Alunos à procura de grupo  </h1></div>

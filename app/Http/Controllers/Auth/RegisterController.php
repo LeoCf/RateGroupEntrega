@@ -50,6 +50,7 @@ class RegisterController extends Controller
           $escola  = Institution::pluck('inst_name','id');
           $curso  =  Course::pluck('Course_name','id');
           $perfil= Profile::pluck('name','id');
+
         
        return view('auth.register',compact('escola','curso','perfil'));
 
@@ -73,6 +74,7 @@ class RegisterController extends Controller
             'password' => 'required|min:6|confirmed',
             'instituicao'  => 'required',
             'curso'  => 'required',
+            'tipo'   => 'required',
             'g-recaptcha-response' => 'required',
 
         ]);
@@ -93,7 +95,8 @@ class RegisterController extends Controller
 			'inst_id' => $data['instituicao'],
 			'course_id'=> $data['curso'],
             'profile_id'=>$data['perfil'],
-           
+            'type'=>$data['tipo'],
+            
 			
         ]);
     }

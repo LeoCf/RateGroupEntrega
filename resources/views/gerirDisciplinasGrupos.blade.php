@@ -15,18 +15,21 @@
                                     Disciplinas Activa : {{Form::submit($discp_active->discp_name)}} 
                                     {{Form::close()}}
                                     @endforeach
+                                    </div>  
+                                    <div class="panel-heading"><h1>Grupo Activos</h1>
                                     @foreach($grupos_activos as $grup_activos)
-                                    Grupo Activo: {{Form::button($grup_activos->nome)}}
+                                    Grupo Activo: {{Form::button($grup_activos->nome)}} <br> <br>
                                     @endforeach
-                                            
-                                    </div>                           
+                                    </div>
+                                                           
                                     <div class="panel-heading"><h1>Disciplinas do Curso  </h1></div>
+                                    <div class="panel-heading"><h2>Disciplinas disponiveis para inscrição:</h2>
                                 @foreach($disciplinas_do_curso_unsub as $discp_curso) 
                                 {{Form::open(array('action' => array('gerirDiscpGroupController@adicionar_disciplina_utilizador', $discp_curso->id)))}}
-                                <div class="panel-heading"><h1>Disciplinas disponiveis para inscrição</h1>{{Form::submit($discp_curso->discp_name)}}
+                                {{Form::submit($discp_curso->discp_name)}}
                                  {{Form::close()}}
                                 @endforeach       
-                                
+                                </div>
 
 <div class="panel-heading"><h1>Introduzir novo grupo</h1>
 

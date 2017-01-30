@@ -16,7 +16,7 @@ class User extends Model implements AuthenticatableContract
  
     protected $table ='Users';
 
-    protected $fillable = ['id','name', 'email', 'password','inst_id','course_id', 'created_at', 'updated_at','profile_id'];
+    protected $fillable = ['id','name', 'email', 'password','inst_id','course_id', 'created_at', 'updated_at','profile_id','type'];
 
     //Relação muitos para muitos com o curso
     public function course()

@@ -27,13 +27,9 @@ function Pedir_pass() {
                 	<div class="panel-body">
                 	@if(Auth::user()->type=='user')
                 		<table id="alunosComGrupo" class="tabelaDiscp" width="100%">
-						<tr>
 						<th>Nome</th>
 						<th>Id do Grupo</th>
 						<th>Juntar-se ao Grupo</th>
-						</tr>
-						
-						<tr>
 						@foreach($grupos_formados as $nome)
 						{{Form::open(array('action' => array('procurarGrupoController@aderir_grupo', $nome->id)))}}
 							<tr><td>{{$nome->nome}}</td><td>{{$nome->id}}</td>
@@ -44,7 +40,8 @@ function Pedir_pass() {
 							</tr>
 						{{Form::close()}}
 						@endforeach
-						</tr>
+						</table>
+						
 
 						
 

@@ -14,7 +14,7 @@ table, th, td {
 		<th>Curso</th>
 		<th>Avaliação Media</th>
 		<th>Perfil</th>
-		<th>Grupo</th>
+		<th>Grupos</th>
 	</tr>
 	<tr>
 @foreach($grupos_formados as $nome)

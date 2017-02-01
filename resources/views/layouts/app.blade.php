@@ -21,10 +21,8 @@
     <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
         <link rel="icon" href="favicon.ico" type="image/x-icon"/>
-       <script src='https://www.google.com/recaptcha/api.js'></script>
-        <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
-        
-
+        <script src='https://www.google.com/recaptcha/api.js'></script>
+       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
 
 
@@ -62,6 +60,9 @@
                 setInterval(nextBackground, 20000);
 
                 header.css('background-image', backgrounds[0]);
+
+
+
     </script>
 
 
@@ -112,6 +113,7 @@
                                 <li><a href="/avaliar">Avaliar</a></li>
                                 <li><a href="/procurarGrupos">Procurar Grupos</a></li>
                                 <li><a href="/gerirDisciplinasGrupos">Gerir Disciplinas e Grupos </a></li>
+                                <li><a href="/procurarUser">Procurar Utilizador </a></li>
                             </ul>  
                         </div>
                     
@@ -164,8 +166,6 @@
         </ul>
       </footer>
 @show
-</div>     
-    <!-- Scripts -->
-    <script src="/js/app.js"></script>
+
 </body>
 </html>

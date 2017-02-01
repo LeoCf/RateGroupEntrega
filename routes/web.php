@@ -21,6 +21,10 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index');
 
+Route::get('/procurarUser','procurarUserController@index');
+Route::post('/procurarUser/showUser','procurarUserController@showUser');
+
+
 Route::get('/perfil','perfilController@index');
 Route::post('/perfil','perfilController@update_avatar');
 //Rotas para gestão das disciplinas e Grupos

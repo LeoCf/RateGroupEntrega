@@ -5,7 +5,6 @@ table, th, td {
 
 }
 
-
 </style>
 
 <script>
@@ -14,6 +13,7 @@ function Pedir_pass() {
     
 }
 </script>
+
 
 @section('menu')
 
@@ -71,22 +71,22 @@ function Pedir_pass() {
 
 
 
-			</div>	
-            <div class="panel panel-default">
+			
+           
                 <div class="panel-heading"><h1>Alunos à procura de grupo  </h1></div>
-                	<div class="panel-body">
+           
                 		<table id="alunosSemGrupo" class="tabelaDiscp" width="100%">
-						<tr>
+						
+						<th>Utilizador</th>
 						<th>Nome</th>
 						<th>Curso</th>
 						<th>Avaliação Media</th>
 						<th>Perfil</th>
 						<th>Enviar Convite</th>
-						</tr>
-					</div>
-						<tr>
+									
 						@foreach($users_nogroup as $users) 
-							<tr><td>{{$users->name}}</td>
+							<tr><td><img id='aumenta' src="/avatars/{{ $users->avatar }}" class="img_user" name="imgUser" /></td>
+							<td>{{$users->name}}</td>
 							<td>{{$users->course_id}}</td>
 							<td>{{$users->rating}}</td>
 							<td>{{$perfil_users->find($users->profile_id)->name }} </td>
@@ -94,7 +94,8 @@ function Pedir_pass() {
 							</tr>
 						@endforeach
 						</table>
-					</div>
+					
+</div>
 </div>
 </div>
 </div>

@@ -17,7 +17,19 @@
 				margin-top:10px;
 			}
 
-		
+			.img_user {
+			display:inline-block; 
+			width:50px;
+			height:50px;
+			border-radius:50%;
+			
+			}
+
+			#aumenta:hover{
+  			 width:200px;
+   			 height:200px;
+			
+   			 }
 
 			.upimg p{
 			text-align:center
@@ -392,13 +404,15 @@ form input{
   font-weight: bold;
 }
 */
-#alunosSemGrupo{
+#alunosSemGrupo {
 	position: relative;
 	background-color: white;
 	opacity: 0.9;
 	color: black;
-	text-indent: 50px;
+	text-indent: 30;
 	font-size: 18px;
+	text-align: left;
+
 }
 
 
@@ -409,6 +423,8 @@ tr:hover{background-color:#1E90FF}
  .tabelaDiscp 
  {
     font-weight: bold;
+    text-align: left;
+
 
 }
 

@@ -23,6 +23,7 @@ Route::get('/home', 'HomeController@index');
 
 Route::get('/procurarUser','procurarUserController@index');
 Route::post('/procurarUser/showUser','procurarUserController@showUser');
+Route::get('/procurarUser/liveSearch/{key}','procurarUserController@liveSearch');
 
 
 Route::get('/perfil','perfilController@index');

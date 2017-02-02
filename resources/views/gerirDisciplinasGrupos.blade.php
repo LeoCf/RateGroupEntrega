@@ -32,13 +32,25 @@
                                 </div>
 
 <div class="panel-heading"><h1>Introduzir novo grupo</h1>
+@if (count($errors) > 0)
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
 
-{{Form::open(array('action' => 'gerirDiscpGroupController@adicionar_grupo_utilizador'))}}
-{{Form::label('nome_grupo', 'Nome do Grupo', array('class' => 'formGrupo'))}}
-{{Form::text('username')}}
+<form action="gerirDisciplinasGrupos" method="POST" id='jsValidation'>
+{{Form::token()}}
+
+
+{{Form::label('nomeGrupo', 'Nome do Grupo', array('class' => 'formGrupo'))}}
+{{Form::text('nomeGrupo')}}
 
 {{Form::label('num_alunos', 'Numero  de  Alunos', array('class' => 'formGrupo'))}}
-{{Form::select('number', [1, 2, 3,4,5,6,7,8,9,10])}}
+{{Form::select('numeroAlunos', [1, 2, 3,4,5,6,7,8,9,10])}}
 
 {{Form::label('date_fim', 'Data  de  Fim  ', array('class' => 'formGrupo'))}}
 {{Form::date('date') }}
@@ -50,13 +62,12 @@
 {{Form::select('disciplina_cg', $grupos_nao_activos )}}
 
 {{Form::submit('Criar Grupo')}}
-{{Form::close()}}
+</form>
 </div>
 
 <br> <br> <br>
 </div>
-
-
+  {!! $validarJs !!}
 
 
 

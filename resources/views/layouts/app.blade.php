@@ -21,15 +21,11 @@
     <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
         <link rel="icon" href="favicon.ico" type="image/x-icon"/>
-        <script src='https://www.google.com/recaptcha/api.js'></script>
-       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-
-
-
-
-
-
-</head>
+         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    </head>
 <body>
 <!-- Scripts -->
  <!--  -->
@@ -81,6 +77,7 @@
                            <a href="{{ url('/home') }}"><img src="{{ URL::asset('images/logo_RateMe.png') }}" alt="logoRateMe" width="120px" height="100px"/></a>
                             <li><a href="{{ url('/login') }}">Login</a></li>
                             <li><a href="{{ url('/register') }}">Register</a></li>
+                            <li><a href="/procurarUser">Procurar Utilizador </a></li>
     
                             
                         </div>

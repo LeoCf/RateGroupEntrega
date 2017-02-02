@@ -165,6 +165,7 @@ return [
         Illuminate\View\ViewServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
         Anhskohbo\NoCaptcha\NoCaptchaServiceProvider::class,
+		Proengsoft\JsValidation\JsValidationServiceProvider::class,
 		'Barryvdh\Debugbar\ServiceProvider',
         'Collective\Html\HtmlServiceProvider',
 
@@ -231,6 +232,7 @@ return [
         'Image' => Intervention\Image\Facades\Image::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+		'JsValidator' => Proengsoft\JsValidation\Facades\JsValidatorFacade::class,
 		'Debugbar' => 'Barryvdh\Debugbar\Facade',
         'Form' => 'Collective\Html\FormFacade',
         'Html' => 'Collective\Html\HtmlFacade',

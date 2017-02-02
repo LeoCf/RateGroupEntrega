@@ -9,11 +9,21 @@ use App\Models\Institution;
 use App\Models\User;
 use App\Models\Group;
 use App\Models\Profile;
-use Auth;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Collection;
+use JsValidator;
+use Auth;
 
 class gerirDiscpGroupController extends Controller
 {
+    protected $validacao=[
+        'nomeGrupo'=> 'bail|required|unique:Groups,nome',
+        'numeroAlunos' => 'required|max:255',
+        'date' => 'required|after:today',
+        'password' =>'required',
+        'disciplina_cg'=>'required',
+
+    ];
 
     public function getDisciplines()
     {
@@ -25,6 +35,9 @@ class gerirDiscpGroupController extends Controller
 
      public function index()
     {   
+
+        //Validação Javascript usando biblioteca
+        $validarJs = JsValidator::make($this->validacao);
         //Dados do Utilizador 
     	$user = Auth::user();
     	$id=$user->id;
@@ -53,7 +66,7 @@ class gerirDiscpGroupController extends Controller
         //Grupos onde o utilizador se encontra isncrito
         $grupos_activos=$user->groups()->get(); 
         
-        
+       
     
         //Disciplinas em que o utilizador esta inscrito mas não tem grupo
         $grupos_nao_activos=$discipline->diffKeys($grupos_activos)->pluck('discp_name','id'); 
@@ -69,7 +82,7 @@ class gerirDiscpGroupController extends Controller
                
         
         //Vista retornada e os dados passados a essa view atraves do metodo compact
-    	return view('gerirDisciplinasGrupos',compact('curso','discipline','user','instituição','group_id','grupos_activos','disciplinas_do_curso_unsub','grupos_nao_activos'));
+    	return view('gerirDisciplinasGrupos',compact('curso','discipline','user','instituição','group_id','grupos_activos','disciplinas_do_curso_unsub','grupos_nao_activos','validarJs'));
     }
 
     //Utilizador Subscreve disciplina e esta é adicionada a base de dados
@@ -96,13 +109,23 @@ class gerirDiscpGroupController extends Controller
      }
 
      //adiciona um grupo ao utilizador por ele criado
-     public function adicionar_grupo_utilizador(Request $request)
+     public function adicionar_grupo_utilizador(Request $request) 
      {
 
-       
+       // $this->validate($request, $validacao
+        
+         $validar = Validator::make($request->all(), $this->validacao);
+
+        
+         if ($validar->fails())
+        {
+            return redirect()->back()->withErrors($validar->errors());
+        }
+
+
         $user=Auth::user();
-        $nome_grupo=$request->username;
-        $numero_alunos=$request->number;
+        $nome_grupo=$request->nomeGrupo;
+        $numero_alunos=$request->numeroAlunos;
         $date=$request->date;
         $password=$request->password;
         $disciplina_id=$request->disciplina_cg;

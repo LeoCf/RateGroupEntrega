@@ -11,18 +11,45 @@
 
 
 <script>
-/*
-$('loadUser').submit(function() { // catch the form's submit event
-    $.ajax({ // create an AJAX call...
-        data: $(this).serialize(), // get the form data
-        type: $(this).attr('method'), // GET or POST
-        url: $(this).attr('action'), // the file to call
-        success: function(response) { // on success..
-            $('showUser').html(response); // update the DIV
-        }
+
+$(document).ready(function () {
+
+        var typingTimer;                
+        var doneTypingInterval = 300;  
+        $("#searchbox").on('keyup', function () {
+            clearTimeout(typingTimer);
+            if ($('#searchbox').val()) {
+                typingTimer = setTimeout(doneTyping, doneTypingInterval);
+            }
+        });
     });
-    return false; // cancel original event to prevent form submitting
+
+$(document).on('click', '#item', function() {
+
+    $('#searchbox').val($(this).data('name'));
+    $('#results').empty();
+
 });
+
+    function doneTyping() {
+
+        var key = $('#searchbox').val();
+        if (key.length >= 3) {
+            $.ajax({
+                url: '/procurarUser/liveSearch/' +key,
+                type: 'GET',
+                beforeSend: function () {
+                    $("#results").slideUp('fast');
+                },
+                success: function (data) {
+                    $("#results").html(data);
+                    $("#results").slideDown('fast');
+                  
+                }
+            });
+   }
+
+}
 
 
 </script>
@@ -30,23 +57,25 @@ $('loadUser').submit(function() { // catch the form's submit event
 <div class="container">
 	 <div class="panel panel-default">
     	<div class="panel-heading"><h1> Pesquisa de Utilizador  </h1></div>
-        
     	{{Form::open(array('url' => 'procurarUser/showUser')) }}
-    	{{ Form::text('completar', '', ['id' =>  'completa', 'placeholder' =>  'Introduza nome utilizador'])}}
-    	{{Form::submit('Procurar')}}
+        <div id="content">
+        <input type="text" name="completar" placeholder="Nome Utilizador" id="searchbox">
+        <div id="results"></div>
+        </div>
+        {{Form::submit('Procurar')}} 
     	{{Form::close()}}
-    	<div id='showUser'>
         @if(!empty($userFound))
+        @if(!strcmp($userFound,"empty"))
+        <div class="panel-heading"><h1> Utilizador com o nome: {{$userName}} não Encontrado </h1>
+        @else
         <div class="panel-heading"><h1> Utilizador Encontrado </h1>
-        <p style="text-align:center; font-weight:bold;">{{$userFound->name}}</p>
         <img src="/avatars/{{ $userFound->avatar }}" class="img_userProcurar"/> 
         <p style="text-align:center;font-weight:bold;">{{$institution->inst_name}}
         <p style="text-align:center;font-weight:bold;">{{$course->Course_name}}
-        <p style="text-align:center;font-weight:bold;">Rating Actual:{{$rating}}
+        <p style="text-align:center;font-weight:bold;">Rating Actual: {{$rating}}
         @endif
-        @if(is_null($userFound))
-        <div class="panel-heading"><h1> Utilizador com o nome: {{$userName}} não Encontrado </h1>
         @endif
+        
         
         </div>
 
